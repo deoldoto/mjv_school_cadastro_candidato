@@ -1,4 +1,4 @@
-package beans;
+package Beans;
 
 public class ExperienciaProfissional {
     private String profissao;

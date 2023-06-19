@@ -1,4 +1,5 @@
-import beans.Candidato;
+import Beans.Candidato;
+import Service.*;
 
 import java.util.StringJoiner;
 
@@ -17,9 +18,10 @@ public class Main {
             candidato.getEndereco().setLogradouro("Rua dos testes");
             candidato.getEndereco().setNumero("123");
             candidato.getEndereco().setBairro("Universitário");
-            candidato.setEmail("email@teste.com.br");
+            candidato.getEmail().setEmail("email@teste.com.br");
             candidato.getTelefone().setTelefone(43334342L);
             candidato.getCelular().setTelefone(434343L);
+            candidato.getCelular().setCelular(true);
             candidato.getCelular().setWhatsapp(true);
             candidato.getExperienciaProfissional().setProfissao("professor");
             candidato.getExperienciaProfissional().setEmrpesa("SEED");
@@ -31,33 +33,13 @@ public class Main {
 
 
 
-            StringJoiner sj=  new StringJoiner(";");
-            sj.add(getValorValido(candidato.getNome()))
-                    .add(getValorValido(candidato.getCpf()))
-                    .add(getValorValido(candidato.getNome()))
-                    .add(getValorValido(candidato.getCpf()))
-                    .add(getValorValido(candidato.getDataNascimentoFormatada()))
-                    .add(getValorValido(candidato.getSexo()))
-                    .add(getValorValido(candidato.getEndereco().getLogradouro()))
-                    .add(getValorValido(candidato.getEndereco().getNumero()))
-                    .add(getValorValido(candidato.getEndereco().getBairro()))
-                    .add(getValorValido(candidato.getEndereco().getComplemento()))
-                    .add(getValorValido(candidato.getEndereco().getCidade().getNome()))
-                    .add(getValorValido(candidato.getEndereco().getCidade().getUf()))
-                    .add(getValorValido(candidato.getEmail()))
-                    .add(getValorValido(candidato.getTelefone().getTelefone().toString()))
-                    .add(getValorValido(candidato.getCelular().getTelefone().toString()))
-                    .add(getValorValido(candidato.getCelular().getTelefone().toString()))
-                    .add(getValorValido(candidato.getCelular().isWhatsapp()))
-                    .add(getValorValido(candidato.getExperienciaProfissional().getProfissao()))
-                    .add(getValorValido(candidato.getExperienciaProfissional().getEmrpesa()))
-                    .add(getValorValido(candidato.getExperienciaProfissional().getSalario().toString()))
-                    .add(getValorValido(candidato.getExperienciaProfissional().isEmpregoAtual()))
-                    .add(getValorValido(candidato.getPretencaoSalarial().getPretencaoMaxima().toString()))
-                    .add(getValorValido(candidato.getPretencaoSalarial().getPretencaoMinima().toString()))
-                    .add(getValorValido(candidato.getPretencaoSalarial().getHabilidades()));
-            System.out.println( sj.toString());
-            ManipuladorArquivo.SalvarArquivo(null, sj.toString());
+            StringJoiner arquivo=  new StringJoiner(";");
+            CandidatoService.GerarRegistroArquivoCSV(candidato, arquivo);
+
+
+
+            System.out.println( arquivo.toString());
+            ManipuladorArquivo.SalvarArquivo(null, arquivo.toString());
   //      }
         System.out.println("Hello world!");
     }

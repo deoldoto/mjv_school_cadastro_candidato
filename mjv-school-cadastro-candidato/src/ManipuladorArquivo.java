@@ -13,8 +13,9 @@ public class ManipuladorArquivo {
         Path arquivoSalvar = arquivoDestino;
         if (arquivoSalvar == null)
             arquivoSalvar = arquivoPadrao;
+        String texto = conteudo +System.lineSeparator();
         try {
-            Files.write(arquivoSalvar, conteudo.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.write(arquivoSalvar, texto.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

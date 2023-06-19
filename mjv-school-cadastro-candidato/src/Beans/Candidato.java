@@ -1,6 +1,4 @@
-package beans;
-
-import sun.security.x509.OtherName;
+package Beans;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +12,7 @@ public class Candidato {
     private Telefone telefone;
     private Telefone celular;
 
-    private String email;
+    private Email email;
     private ExperienciaProfissional experienciaProfissional;
 
     private PretencaoSalarial pretencaoSalarial;
@@ -23,6 +21,7 @@ public class Candidato {
         endereco = new Endereco();
         telefone = new Telefone();
         celular= new Telefone();
+        email = new Email();
         experienciaProfissional = new ExperienciaProfissional();
         pretencaoSalarial = new PretencaoSalarial();
 
@@ -111,11 +110,11 @@ public class Candidato {
 
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         this.email = email;
     }
 }
