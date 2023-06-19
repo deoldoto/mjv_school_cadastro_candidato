@@ -8,6 +8,10 @@ public class Endereco {
     private String bairro;
     private String complemento;
 
+    public Endereco(){
+        cidade = new Cidade();
+    }
+
     public Cidade getCidade() {
         return cidade;
     }

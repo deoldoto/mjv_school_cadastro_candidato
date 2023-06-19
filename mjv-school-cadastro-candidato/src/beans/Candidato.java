@@ -1,6 +1,9 @@
 package beans;
 
+import sun.security.x509.OtherName;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Candidato {
     private String nome;
@@ -10,9 +13,21 @@ public class Candidato {
     private Endereco endereco;
     private Telefone telefone;
     private Telefone celular;
+
+    private String email;
     private ExperienciaProfissional experienciaProfissional;
 
     private PretencaoSalarial pretencaoSalarial;
+
+    public Candidato(){
+        endereco = new Endereco();
+        telefone = new Telefone();
+        celular= new Telefone();
+        experienciaProfissional = new ExperienciaProfissional();
+        pretencaoSalarial = new PretencaoSalarial();
+
+
+    }
 
     public String getNome() {
         return nome;
@@ -86,4 +101,21 @@ public class Candidato {
         this.pretencaoSalarial = pretencaoSalarial;
     }
 
+    public String getDataNascimentoFormatada(){
+
+        if (this.dataNascimento == null)
+            return "";
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
+        return dataNascimento.format(formatter);
+
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
